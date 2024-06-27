@@ -2,4 +2,5 @@
   (:gen-class))
 
 
-(defn prime-factors-of [n] [])
+(defn prime-factors-of [n]
+  (if (> n 1) [n] []))
