@@ -3,8 +3,11 @@
 
 
 (defn prime-factors-of [n]
-  (if (> n 1)
-    (if (zero? (mod n 2))
-      (cons 2 (prime-factors-of (quot n 2)))
-      [n])
-    []))
+    (loop [n n
+           divisor 2
+           factors []]
+      (if (> n 1)
+        (if (zero? (mod n divisor))
+          (recur (quot n divisor) divisor (conj factors divisor))
+          (recur n (inc divisor) factors))
+        factors)))
